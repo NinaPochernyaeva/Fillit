@@ -1,4 +1,4 @@
-#include "libft.h"
+#include "Libft/libft.h"
 #include <stdlib.h>
 
 char **ft_map_create(int side)  //функция5, создает карту
@@ -8,11 +8,11 @@ char **ft_map_create(int side)  //функция5, создает карту
     int j;
 
     i = 0;
-    **map = (char **)malloc((side) * sizeof(char));
+    map = (char **)malloc((side) * sizeof(char));
     while (i < side)
     {
         j = 0;
-        map[i] = (int *) malloc((size + 1) * sizeof(char));
+        map[i] = (char *) malloc((side + 1) * sizeof(char));
         while (j < side)
         {
             map[i][j] = '.';
@@ -24,7 +24,7 @@ char **ft_map_create(int side)  //функция5, создает карту
     return (map);
 }
 
-void ft_print_map(char **map)  //печатает карту
+void ft_print_map(char **map, int side)  //печатает карту
 {
     int i;
 
@@ -32,6 +32,7 @@ void ft_print_map(char **map)  //печатает карту
     while (i < side)
     {
         ft_putstr(map[i]);
+        ft_putchar('\n');
         i++;
     }
 }
@@ -41,8 +42,9 @@ int main()
     int side;
     char **map;
 
-    side = ft_square_root(n * 4); //n - число тетрамино, хз откуда брать
+    side = 10;
+   // side = ft_square_root(n * 4); //n - число тетрамино, хз откуда брать
     map = ft_map_create(side);
-
+    ft_print_map(map, side);
     return (0);
 }
